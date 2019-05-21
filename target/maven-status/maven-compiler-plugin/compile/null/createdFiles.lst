@@ -1,4 +1,4 @@
-com\rtspw\calculator\App.class
-com\rtspw\calculator\SecondaryController.class
 module-info.class
 com\rtspw\calculator\PrimaryController.class
+com\rtspw\calculator\App.class
+com\rtspw\calculator\SecondaryController.class

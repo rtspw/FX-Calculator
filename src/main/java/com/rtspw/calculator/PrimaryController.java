@@ -18,18 +18,17 @@ public class PrimaryController {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+        App.setRoot("calculator");
     }
 
     @FXML
     private void initialize() {
         String buttonBaseStyle = primaryButton.getStyle();
         primaryButton.setOnMouseEntered(event -> {
-            FillTransition fillTransition = new FillTransition(Duration.seconds(0.25), primaryButtonBackground);
+            FillTransition fillTransition = new FillTransition(Duration.seconds(0.1), primaryButtonBackground);
             fillTransition.setToValue(Color.web("#aaa"));
             fillTransition.setFromValue(Color.WHITE);
             fillTransition.play();
-//            primaryButton.setStyle(buttonBaseStyle + "-fx-background-color: #aaa;");
         });
         primaryButton.setOnMouseExited(event -> {
             FillTransition fillTransition = new FillTransition(Duration.seconds(0.25), primaryButtonBackground);

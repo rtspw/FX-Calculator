@@ -46,8 +46,8 @@
                </VBox.margin></Label>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Rectangle fx:id="primaryButtonBackground" arcHeight="5.0" arcWidth="3.0" fill="WHITE" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="178.0" />
-                  <Button fx:id="primaryButton" onAction="#switchToSecondary" style="-fx-background-color: rgba(0, 0, 0, 0); -fx-border-width: 1; -fx-border-color: #aaa; -fx-border-radius: 2;" text="Switch to Secondary View" textAlignment="CENTER">
+                  <Rectangle fx:id="primaryButtonBackground" arcHeight="5.0" arcWidth="3.0" fill="WHITE" height="40.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+                  <Button fx:id="primaryButton" onAction="#switchToSecondary" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: rgba(0, 0, 0, 0); -fx-border-width: 1; -fx-border-color: #aaa; -fx-border-radius: 2;" text="Switch to Secondary View" textAlignment="CENTER" StackPane.alignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                      </padding>
