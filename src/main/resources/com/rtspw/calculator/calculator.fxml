@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -79,14 +80,6 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimpleLeftParentheses" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="(" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnSimpleRightParentheses" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text=")" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
                         <Button fx:id="btnSimpleBackspace" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="⌫" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -119,6 +112,25 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                           <children>
+                              <Button fx:id="btnSimpleLeftParentheses" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="(">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btnSimpleRightParentheses" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text=")">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnSimpleClear" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="Clear" GridPane.columnIndex="1">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </GridPane>
                   <Label fx:id="simpleCalcDisplay" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="25.0" layoutY="32.0" style="-fx-background-color: #eee; -fx-border-radius: 4; -fx-border-width: 1; -fx-border-color: #aaa;" textFill="#3b444b" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">

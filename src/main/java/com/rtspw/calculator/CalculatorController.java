@@ -19,7 +19,7 @@ public class CalculatorController {
 
     @FXML
     private void initialize() {
-        simpleCalcDisplay.setText("");
+      simpleCalcDisplay.setText("");
     }
 
     @FXML
@@ -29,7 +29,7 @@ public class CalculatorController {
         String currentDisplayText = simpleCalcDisplay.getText();
 
         switch (sourceId) {
-            case "btnSimpleEquals":
+            case "btnSimpleClear":
                 simpleCalcDisplay.setText("");
                 break;
             case "btnSimpleBackspace":
