@@ -18,6 +18,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"));
+        stage.setMinHeight(400);
+        stage.setMinWidth(300);
         stage.setScene(scene);
         stage.show();
     }
