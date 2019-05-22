@@ -11,6 +11,7 @@ public class CalculatorController {
 
     @FXML
     private Label simpleCalcDisplay;
+    private DisplayController displayController;
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -19,27 +20,27 @@ public class CalculatorController {
 
     @FXML
     private void initialize() {
-      simpleCalcDisplay.setText("");
+      displayController = new DisplayController(simpleCalcDisplay);
     }
 
     @FXML
     private void handleSimpleCalcButton(MouseEvent event) {
         Button sourceBtn = (Button)event.getSource();
         String sourceId = sourceBtn.getId();
-        String currentDisplayText = simpleCalcDisplay.getText();
 
         switch (sourceId) {
             case "btnSimpleClear":
-                simpleCalcDisplay.setText("");
+                displayController.clear();
                 break;
             case "btnSimpleBackspace":
-                simpleCalcDisplay.setText(currentDisplayText.substring(0, currentDisplayText.length() - 1));
+                displayController.unappend();
                 break;
             case "btnSimplePlusMinus":
-                simpleCalcDisplay.setText(currentDisplayText + "-");
+                displayController.append("-");
                 break;
             default:
-                simpleCalcDisplay.setText(currentDisplayText + sourceBtn.getText());
+                String clickedButtonText = sourceBtn.getText();
+                displayController.append(clickedButtonText);
         }
     }
 
