@@ -12,6 +12,7 @@ public class CalculatorController {
     @FXML
     private Label simpleCalcDisplay;
     private DisplayController displayController;
+    private InputValidator inputValidator;
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -20,7 +21,8 @@ public class CalculatorController {
 
     @FXML
     private void initialize() {
-      displayController = new DisplayController(simpleCalcDisplay);
+        this.displayController = new DisplayController(simpleCalcDisplay);
+        this.inputValidator = new InputValidator();
     }
 
     @FXML
@@ -34,13 +36,17 @@ public class CalculatorController {
                 break;
             case "btnSimpleBackspace":
                 displayController.unappend();
+                inputValidator.removeToken();
                 break;
             case "btnSimplePlusMinus":
                 displayController.append("-");
                 break;
             default:
                 String clickedButtonText = sourceBtn.getText();
-                displayController.append(clickedButtonText);
+                if (inputValidator.isValid(clickedButtonText)) {
+                    inputValidator.addToken(clickedButtonText);
+                    displayController.append(clickedButtonText + " ");
+                }
         }
     }
 

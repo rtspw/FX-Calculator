@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -40,79 +41,99 @@
                         <Insets />
                      </opaqueInsets>
                      <children>
-                        <Button fx:id="btnSimple1" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple1" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple2" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple2" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple3" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple3" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple4" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple4" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple5" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple5" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple6" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple6" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple7" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple7" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple8" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple8" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple9" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple9" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimple0" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimple0" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimpleBackspace" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="⌫" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimpleBackspace" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="⌫" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimpleDivide" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="÷" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimpleDivide" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" stylesheets="@styles.css" text="÷" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="calc-button" />
+                              <String fx:value="calc-button-operation" />
+                           </styleClass></Button>
+                        <Button fx:id="btnSimpleMultiply" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" stylesheets="@styles.css" text="×" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="calc-button" />
+                              <String fx:value="calc-button-operation" />
+                           </styleClass></Button>
+                        <Button fx:id="btnSimpleMinus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" stylesheets="@styles.css" text="-" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="calc-button" />
+                              <String fx:value="calc-button-operation" />
+                           </styleClass></Button>
+                        <Button fx:id="btnSimplePlusMinus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="±" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimpleMultiply" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="×" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimpleDot" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btnSimpleMinus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="-" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="btnSimplePlus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" stylesheets="@styles.css" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnSimplePlusMinus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="±" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="calc-button" />
+                              <String fx:value="calc-button-operation" />
+                           </styleClass></Button>
+                        <Button fx:id="btnSimpleEquals" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" stylesheets="@styles.css" text="=" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnSimpleDot" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnSimplePlus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnSimpleEquals" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="=" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="calc-button" />
+                              <String fx:value="calc-button-equals" />
+                           </styleClass></Button>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <children>
                               <Button fx:id="btnSimpleLeftParentheses" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="(">
                                  <cursor>
@@ -126,7 +147,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button fx:id="btnSimpleClear" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="Clear" GridPane.columnIndex="1">
+                        <Button fx:id="btnSimpleClear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMousePressed="#handleSimpleCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="Clear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
