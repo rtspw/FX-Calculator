@@ -7,31 +7,31 @@ class DisplayController {
     private String text;
 
     private void updateDisplay() {
-        this.display.setText(this.text);
+        display.setText(text);
     }
 
     DisplayController(Label display) {
         this.display = display;
-        this.text = "";
-        this.updateDisplay();
+        text = "";
+        updateDisplay();
     }
 
     void clear() {
-        this.text = "";
-        this.updateDisplay();
+        text = "";
+        updateDisplay();
     }
 
     void append(String str) {
-        this.text = this.text + str;
-        this.updateDisplay();
+        text = text + str;
+        updateDisplay();
     }
 
     void unappend() {
-        if (this.text.length() == 0) return;
-        if (this.text.charAt(this.text.length() - 1) == ' ') {
-            this.text = this.text.substring(0, this.text.length() - 1);
+        if (text.length() == 0) return;
+        if (text.charAt(text.length() - 1) == ' ') {
+            text = text.substring(0, text.length() - 1);
         }
-        this.text = this.text.substring(0, this.text.length() - 1);
-        this.updateDisplay();
+        text = text.substring(0, text.length() - 1);
+        updateDisplay();
     }
 }
