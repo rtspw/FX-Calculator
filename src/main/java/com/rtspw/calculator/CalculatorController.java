@@ -40,7 +40,7 @@ public class CalculatorController {
                 inputValidator.removeToken();
                 break;
             case "btnSimplePlusMinus":
-                displayController.append("—");
+                displayController.append("-");
                 break;
             default:
                 String clickedButtonText = sourceBtn.getText();
@@ -55,6 +55,11 @@ public class CalculatorController {
         if (StringUtil.isOperator(buttonText)) {
             return " " + buttonText + " ";
         }
+//        } else if (StringUtil.isLeftParentheses(buttonText)) {
+//            return buttonText + " ";
+//        } else if (StringUtil.isRightParentheses(buttonText)) {
+//            return " " + buttonText;
+//        }
         return buttonText;
     }
 

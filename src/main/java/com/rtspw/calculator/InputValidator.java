@@ -5,8 +5,7 @@ import java.util.Stack;
 class InputValidator {
 
     private int parenthesesCount = 0;
-    private Stack<String> tokens;
-    final private char[] operators = {'+', '-', '×', '÷'};
+    final private Stack<String> tokens;
 
     InputValidator() {
         this.tokens = new Stack<>();
@@ -14,7 +13,6 @@ class InputValidator {
     }
 
     boolean isValid(String input) {
-
         final String prevToken = tokens.peek();
         final boolean currentIsNumber = StringUtil.isNumber(input);
         final boolean currentIsOperator = StringUtil.isOperator(input);
@@ -22,15 +20,21 @@ class InputValidator {
         final boolean currentIsRightParen = StringUtil.isRightParentheses(input);
         final boolean prevIsNumber = StringUtil.isNumber(prevToken);
         final boolean prevIsOperator = StringUtil.isOperator(prevToken);
+        final boolean prevIsLeftParen = StringUtil.isLeftParentheses(prevToken);
+        final boolean prevIsRightParen = StringUtil.isRightParentheses(prevToken);
 
-        if (currentIsLeftParen && prevIsNumber && !prevToken.equals("")) return false;
+        if (currentIsLeftParen && prevIsNumber && tokens.size() != 1) return false;
         if (currentIsRightParen && prevIsOperator) return false;
-        if (currentIsOperator && prevToken.equals("")) return false;
+        if (currentIsRightParen && prevIsLeftParen) return false;
+        if (currentIsLeftParen && prevIsRightParen) return false;
+        if (currentIsNumber && prevIsRightParen) return false;
+        if (currentIsOperator && prevIsLeftParen) return false;
+        if (currentIsOperator && tokens.size() == 1) return false;
         if (currentIsOperator && prevIsOperator) return false;
 
-        if (input.equals("(")) {
+        if (currentIsLeftParen) {
             parenthesesCount += 1;
-        } else if (input.equals(")")) {
+        } else if (currentIsRightParen) {
             if (parenthesesCount == 0) return false;
             parenthesesCount -= 1;
         }
@@ -44,9 +48,9 @@ class InputValidator {
 
     void removeToken() {
         if (this.tokens.size() <= 1) return;
-        String top = this.tokens.pop();
-        if (top.equals("(")) parenthesesCount -= 1;
-        if (top.equals(")")) parenthesesCount += 1;
+        final String top = this.tokens.pop();
+        if (StringUtil.isLeftParentheses(top)) parenthesesCount -= 1;
+        if (StringUtil.isRightParentheses(top)) parenthesesCount += 1;
     }
 
     void resetTokens() {
