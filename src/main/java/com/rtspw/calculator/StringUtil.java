@@ -18,4 +18,14 @@ class StringUtil {
         };
         return str.chars().mapToObj(c -> (char)c).allMatch(isOperator);
     }
+
+    static boolean isLeftParentheses(String str) {
+        if (str.isEmpty()) return false;
+        return str.charAt(0) == '(';
+    }
+
+    static boolean isRightParentheses(String str) {
+        if (str.isEmpty()) return false;
+        return str.charAt(0) == ')';
+    }
 }

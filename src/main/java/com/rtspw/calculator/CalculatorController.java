@@ -33,21 +33,29 @@ public class CalculatorController {
         switch (sourceId) {
             case "btnSimpleClear":
                 displayController.clear();
+                inputValidator.resetTokens();
                 break;
             case "btnSimpleBackspace":
                 displayController.unappend();
                 inputValidator.removeToken();
                 break;
             case "btnSimplePlusMinus":
-                displayController.append("-");
+                displayController.append("—");
                 break;
             default:
                 String clickedButtonText = sourceBtn.getText();
                 if (inputValidator.isValid(clickedButtonText)) {
                     inputValidator.addToken(clickedButtonText);
-                    displayController.append(clickedButtonText + " ");
+                    displayController.append(addWhitespace(clickedButtonText));
                 }
         }
+    }
+
+    private String addWhitespace(String buttonText) {
+        if (StringUtil.isOperator(buttonText)) {
+            return " " + buttonText + " ";
+        }
+        return buttonText;
     }
 
 }

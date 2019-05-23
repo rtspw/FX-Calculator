@@ -14,12 +14,17 @@ class InputValidator {
     }
 
     boolean isValid(String input) {
+
         final String prevToken = tokens.peek();
         final boolean currentIsNumber = StringUtil.isNumber(input);
         final boolean currentIsOperator = StringUtil.isOperator(input);
+        final boolean currentIsLeftParen = StringUtil.isLeftParentheses(input);
+        final boolean currentIsRightParen = StringUtil.isRightParentheses(input);
         final boolean prevIsNumber = StringUtil.isNumber(prevToken);
         final boolean prevIsOperator = StringUtil.isOperator(prevToken);
 
+        if (currentIsLeftParen && prevIsNumber && !prevToken.equals("")) return false;
+        if (currentIsRightParen && prevIsOperator) return false;
         if (currentIsOperator && prevToken.equals("")) return false;
         if (currentIsOperator && prevIsOperator) return false;
 
@@ -39,11 +44,14 @@ class InputValidator {
 
     void removeToken() {
         if (this.tokens.size() <= 1) return;
-        this.tokens.pop();
+        String top = this.tokens.pop();
+        if (top.equals("(")) parenthesesCount -= 1;
+        if (top.equals(")")) parenthesesCount += 1;
     }
 
     void resetTokens() {
         this.tokens.clear();
         this.tokens.push("");
+        this.parenthesesCount = 0;
     }
 }
