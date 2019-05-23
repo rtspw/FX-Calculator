@@ -42,6 +42,11 @@ class InputValidator {
         return true;
     }
 
+    boolean isExpressionComplete() {
+        final String prevToken = tokens.peek();
+        return StringUtil.isNumber(prevToken) || StringUtil.isRightParentheses(prevToken) && parenthesesCount == 0;
+    }
+
     void addToken(String token) {
         this.tokens.push(token);
     }

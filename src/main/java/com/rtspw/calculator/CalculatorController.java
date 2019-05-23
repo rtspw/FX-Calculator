@@ -25,10 +25,18 @@ public class CalculatorController {
         this.inputValidator = new InputValidator();
     }
 
+    private boolean invalidPreviousExpression = false;
+
     @FXML
     private void handleSimpleCalcButton(MouseEvent event) {
         Button sourceBtn = (Button)event.getSource();
         String sourceId = sourceBtn.getId();
+
+        if (invalidPreviousExpression) {
+            invalidPreviousExpression = false;
+            displayController.clear();
+            inputValidator.resetTokens();
+        }
 
         switch (sourceId) {
             case "btnSimpleClear":
@@ -41,6 +49,16 @@ public class CalculatorController {
                 break;
             case "btnSimplePlusMinus":
                 displayController.append("-");
+                break;
+            case "btnSimpleEquals":
+                if (inputValidator.isExpressionComplete()) {
+                    final String finalValue = "ERROR";
+                    if (finalValue.equals("ERROR")) {
+                        invalidPreviousExpression = true;
+                    }
+                    displayController.clear();
+                    displayController.append(finalValue);
+                }
                 break;
             default:
                 String clickedButtonText = sourceBtn.getText();
@@ -55,11 +73,6 @@ public class CalculatorController {
         if (StringUtil.isOperator(buttonText)) {
             return " " + buttonText + " ";
         }
-//        } else if (StringUtil.isLeftParentheses(buttonText)) {
-//            return buttonText + " ";
-//        } else if (StringUtil.isRightParentheses(buttonText)) {
-//            return " " + buttonText;
-//        }
         return buttonText;
     }
 
