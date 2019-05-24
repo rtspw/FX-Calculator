@@ -14,27 +14,21 @@ class InputValidator {
 
     boolean isValid(String input) {
         final String prevToken = tokens.peek();
-        final boolean currentIsNumber = StringUtil.isNumber(input);
-        final boolean currentIsOperator = StringUtil.isOperator(input);
-        final boolean currentIsLeftParen = StringUtil.isLeftParentheses(input);
-        final boolean currentIsRightParen = StringUtil.isRightParentheses(input);
-        final boolean prevIsNumber = StringUtil.isNumber(prevToken);
-        final boolean prevIsOperator = StringUtil.isOperator(prevToken);
-        final boolean prevIsLeftParen = StringUtil.isLeftParentheses(prevToken);
-        final boolean prevIsRightParen = StringUtil.isRightParentheses(prevToken);
+        final TokenIdentifier current = new TokenIdentifier(input);
+        final TokenIdentifier prev = new TokenIdentifier(prevToken);
 
-        if (currentIsLeftParen && prevIsNumber && tokens.size() != 1) return false;
-        if (currentIsRightParen && prevIsOperator) return false;
-        if (currentIsRightParen && prevIsLeftParen) return false;
-        if (currentIsLeftParen && prevIsRightParen) return false;
-        if (currentIsNumber && prevIsRightParen) return false;
-        if (currentIsOperator && prevIsLeftParen) return false;
-        if (currentIsOperator && tokens.size() == 1) return false;
-        if (currentIsOperator && prevIsOperator) return false;
+        if (current.isLeftParentheses() && prev.isNumber() && !inputIsEmpty()) return false;
+        if (current.isRightParentheses() && prev.isOperator()) return false;
+        if (current.isRightParentheses() && prev.isLeftParentheses()) return false;
+        if (current.isLeftParentheses() && prev.isRightParentheses()) return false;
+        if (current.isNumber() && prev.isRightParentheses()) return false;
+        if (current.isOperator() && prev.isLeftParentheses()) return false;
+        if (current.isOperator() && inputIsEmpty()) return false;
+        if (current.isOperator() && prev.isOperator()) return false;
 
-        if (currentIsLeftParen) {
+        if (current.isLeftParentheses()) {
             parenthesesCount += 1;
-        } else if (currentIsRightParen) {
+        } else if (current.isRightParentheses()) {
             if (parenthesesCount == 0) return false;
             parenthesesCount -= 1;
         }
@@ -62,5 +56,9 @@ class InputValidator {
         this.tokens.clear();
         this.tokens.push("");
         this.parenthesesCount = 0;
+    }
+
+    private boolean inputIsEmpty() {
+        return tokens.size() == 1;
     }
 }

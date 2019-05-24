@@ -1,7 +1,5 @@
 package com.rtspw.calculator;
 
-import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -13,11 +11,6 @@ public class CalculatorController {
     private Label simpleCalcDisplay;
     private DisplayController displayController;
     private InputValidator inputValidator;
-
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
-    }
 
     @FXML
     private void initialize() {
