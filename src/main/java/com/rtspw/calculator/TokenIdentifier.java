@@ -9,7 +9,6 @@ class TokenIdentifier {
     private boolean isRightParentheses;
     private boolean isFunction;
 
-
     TokenIdentifier(String token) {
         this.token = token;
         isOperator = StringUtil.isOperator(token);

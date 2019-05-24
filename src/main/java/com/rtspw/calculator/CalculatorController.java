@@ -44,14 +44,7 @@ public class CalculatorController {
                 displayController.append("-");
                 break;
             case "btnSimpleEquals":
-                if (inputValidator.isExpressionComplete()) {
-                    final String finalValue = "ERROR";
-                    if (finalValue.equals("ERROR")) {
-                        invalidPreviousExpression = true;
-                    }
-                    displayController.clear();
-                    displayController.append(finalValue);
-                }
+                handleEqualsButtonAction();
                 break;
             default:
                 String clickedButtonText = sourceBtn.getText();
@@ -62,10 +55,19 @@ public class CalculatorController {
         }
     }
 
-    private String addWhitespace(String buttonText) {
-        if (StringUtil.isOperator(buttonText)) {
-            return " " + buttonText + " ";
+    private void handleEqualsButtonAction() {
+        if (!inputValidator.isExpressionComplete()) return;
+        final String finalValue = "ERROR";
+        if (finalValue.equals("ERROR")) {
+            invalidPreviousExpression = true;
         }
+        displayController.clear();
+        displayController.append(finalValue);
+    }
+
+    private String addWhitespace(String buttonText) {
+        final TokenIdentifier text = new TokenIdentifier(buttonText);
+        if (text.isOperator()) return " " + buttonText + " ";
         return buttonText;
     }
 

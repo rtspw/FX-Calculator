@@ -37,8 +37,8 @@ class InputValidator {
     }
 
     boolean isExpressionComplete() {
-        final String prevToken = tokens.peek();
-        return StringUtil.isNumber(prevToken) || StringUtil.isRightParentheses(prevToken) && parenthesesCount == 0;
+        final TokenIdentifier prevToken = new TokenIdentifier(tokens.peek());
+        return prevToken.isNumber() || prevToken.isRightParentheses() && parenthesesCount == 0;
     }
 
     void addToken(String token) {
@@ -47,9 +47,10 @@ class InputValidator {
 
     void removeToken() {
         if (this.tokens.size() <= 1) return;
-        final String top = this.tokens.pop();
-        if (StringUtil.isLeftParentheses(top)) parenthesesCount -= 1;
-        if (StringUtil.isRightParentheses(top)) parenthesesCount += 1;
+        final String poppedToken = this.tokens.pop();
+        final TokenIdentifier top = new TokenIdentifier(poppedToken);
+        if (top.isLeftParentheses()) parenthesesCount -= 1;
+        if (top.isRightParentheses()) parenthesesCount += 1;
     }
 
     void resetTokens() {
