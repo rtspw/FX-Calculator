@@ -7,17 +7,25 @@ import javafx.scene.input.MouseEvent;
 
 public class CalculatorController {
 
-    private DisplayController displayController;
-    private InputValidator inputValidator;
-    private boolean invalidPreviousExpression = false;
+    private DisplayController simpleDisplayController;
+    private DisplayController scientificDisplayController;
+    private InputValidator simpleInputValidator;
+    private InputValidator scientificInputValidator;
+    private boolean invalidPreviousSimpleExpression = false;
+    private boolean invalidPreviousScientificExpression = false;
 
     @FXML
     private Label simpleCalcDisplay;
 
     @FXML
+    private Label scientificCalcDisplay;
+
+    @FXML
     private void initialize() {
-        this.displayController = new DisplayController(simpleCalcDisplay);
-        this.inputValidator = new InputValidator();
+        this.simpleDisplayController = new DisplayController(simpleCalcDisplay);
+        this.scientificDisplayController = new DisplayController(scientificCalcDisplay);
+        this.simpleInputValidator = new InputValidator();
+        this.scientificInputValidator = new InputValidator();
     }
 
     @FXML
@@ -25,44 +33,85 @@ public class CalculatorController {
         Button sourceBtn = (Button)event.getSource();
         String sourceId = sourceBtn.getId();
 
-        if (invalidPreviousExpression) {
-            invalidPreviousExpression = false;
-            displayController.clear();
-            inputValidator.resetTokens();
+        if (invalidPreviousSimpleExpression) {
+            invalidPreviousSimpleExpression = false;
+            simpleDisplayController.clear();
+            simpleInputValidator.resetTokens();
         }
 
         switch (sourceId) {
             case "btnSimpleClear":
-                displayController.clear();
-                inputValidator.resetTokens();
+                simpleDisplayController.clear();
+                simpleInputValidator.resetTokens();
                 break;
             case "btnSimpleBackspace":
-                displayController.unappend();
-                inputValidator.removeToken();
+                simpleDisplayController.unappend();
+                simpleInputValidator.removeToken();
                 break;
             case "btnSimplePlusMinus":
-                displayController.append("-");
+                if (simpleInputValidator.isValid("±")) {
+                    simpleInputValidator.addToken("±");
+                    simpleDisplayController.append("-");
+                }
                 break;
             case "btnSimpleEquals":
-                handleEqualsButtonAction();
+                handleSimpleEqualsButtonAction();
                 break;
             default:
                 String clickedButtonText = sourceBtn.getText();
-                if (inputValidator.isValid(clickedButtonText)) {
-                    inputValidator.addToken(clickedButtonText);
-                    displayController.append(addWhitespaceToOperators(clickedButtonText));
-                }
+                if (!simpleInputValidator.isValid(clickedButtonText)) return;
+                simpleInputValidator.addToken(clickedButtonText);
+                simpleDisplayController.append(addWhitespaceToOperators(clickedButtonText));
+
         }
     }
 
-    private void handleEqualsButtonAction() {
-        if (!inputValidator.isExpressionComplete()) return;
+    private void handleSimpleEqualsButtonAction() {
+        if (!simpleInputValidator.isExpressionComplete()) return;
         final String finalValue = "ERROR";
         if (finalValue.equals("ERROR")) {
-            invalidPreviousExpression = true;
+            invalidPreviousSimpleExpression = true;
         }
-        displayController.clear();
-        displayController.append(finalValue);
+        simpleDisplayController.clear();
+        simpleDisplayController.append(finalValue);
+    }
+
+    @FXML
+    private void handleScientificCalcButton(MouseEvent event) {
+        Button sourceBtn = (Button)event.getSource();
+        String sourceId = sourceBtn.getId();
+
+        if (invalidPreviousScientificExpression) {
+            invalidPreviousScientificExpression = false;
+            scientificDisplayController.clear();
+            scientificInputValidator.resetTokens();
+        }
+
+        switch (sourceId) {
+            case "btnScientificClear":
+                scientificDisplayController.clear();
+                scientificInputValidator.resetTokens();
+                break;
+            case "btnScientificBackspace":
+                scientificDisplayController.unappend();
+                scientificInputValidator.removeToken();
+                break;
+            case "btnScientificPlusMinus":
+                if (scientificInputValidator.isValid("±")) {
+                    scientificInputValidator.addToken("±");
+                    scientificDisplayController.append("-");
+                }
+                break;
+            case "btnScientificEquals":
+                // to-do
+                break;
+            default:
+                String clickedButtonText = sourceBtn.getText();
+                if (!scientificInputValidator.isValid(clickedButtonText)) return;
+                scientificInputValidator.addToken(clickedButtonText);
+                scientificDisplayController.append(addWhitespaceToOperators(clickedButtonText));
+        }
+
     }
 
     private String addWhitespaceToOperators(String buttonText) {

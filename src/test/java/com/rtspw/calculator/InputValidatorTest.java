@@ -74,6 +74,16 @@ public class InputValidatorTest {
     }
 
     @Test
+    public void negativeNumbersTest() {
+        assertTrue(iv.isValid("±"));
+        iv.addToken("±");
+        assertFalse(iv.isValid("±"));
+        assertFalse(iv.isValid("-"));
+        assertFalse(iv.isValid(")"));
+        assertTrue(iv.isValid("2"));
+    }
+
+    @Test
     public void unaryFunctionTest() {
         iv.addToken("sin(");
         assertFalse(iv.isValid(")"));
