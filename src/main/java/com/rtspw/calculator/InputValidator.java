@@ -20,8 +20,9 @@ class InputValidator {
         if (current.isRightParentheses() && parenthesesCount == 0) return false;
         if (current.isRightParentheses() && prev.isOperator()) return false;
         if (current.isRightParentheses() && prev.isLeftParentheses()) return false;
-        if (current.isLeftParentheses() && prev.isNumber() && !inputIsEmpty()) return false;
-        if (current.isLeftParentheses() && prev.isRightParentheses()) return false;
+        if (current.isLeftParentheses() && !current.isPowFunction() && prev.isNumber() && !inputIsEmpty()) return false;
+        if (current.isLeftParentheses() && !current.isPowFunction() && prev.isRightParentheses()) return false;
+        if (current.isPowFunction() && !prev.isNumber() && !prev.isRightParentheses()) return false;
         if (current.isNumber() && prev.isRightParentheses()) return false;
         if (current.isOperator() && prev.isLeftParentheses()) return false;
         if (current.isOperator() && inputIsEmpty()) return false;
@@ -38,6 +39,7 @@ class InputValidator {
     InputValidator addToken(String token) {
         this.tokens.push(token);
         final TokenIdentifier current = new TokenIdentifier(token);
+        System.out.println("Token added: " + token + " : " + current);
         if (current.isLeftParentheses())
             parenthesesCount += 1;
         else if (current.isRightParentheses() && parenthesesCount != 0)

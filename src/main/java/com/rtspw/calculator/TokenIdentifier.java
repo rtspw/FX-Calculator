@@ -8,6 +8,7 @@ class TokenIdentifier {
     private boolean isLeftParentheses;
     private boolean isRightParentheses;
     private boolean isFunction;
+    private boolean isPowFunction;
 
     TokenIdentifier(String token) {
         this.token = token;
@@ -16,10 +17,7 @@ class TokenIdentifier {
         isLeftParentheses = StringUtil.isLeftParentheses(token);
         isRightParentheses = StringUtil.isRightParentheses(token);
         isFunction = StringUtil.isFunction(token);
-    }
-
-    String getToken() {
-        return token;
+        isPowFunction = token.contains("^");
     }
 
     boolean isOperator() {
@@ -40,5 +38,21 @@ class TokenIdentifier {
 
     boolean isFunction() {
         return isFunction;
+    }
+
+    boolean isPowFunction() { return isPowFunction; }
+
+    // temporary debug function
+    @Override
+    public String toString() {
+        String properties = "[";
+        if (isOperator()) properties += "operator, ";
+        if (isNumber()) properties += "number, ";
+        if (isLeftParentheses()) properties += "lp, ";
+        if (isRightParentheses()) properties += "rp, ";
+        if (isFunction()) properties += "function, ";
+        if (isPowFunction()) properties += "pow, ";
+        properties += "]";
+        return properties;
     }
 }

@@ -105,6 +105,17 @@ public class CalculatorController {
             case "btnScientificEquals":
                 // to-do
                 break;
+            case "btnScientificSin":
+            case "btnScientificCos":
+            case "btnScientificTan":
+            case "btnScientificLog":
+            case "btnScientificPow":
+                String functionText = sourceBtn.getText() + "(";
+                if (scientificInputValidator.isValid(functionText)) {
+                    scientificInputValidator.addToken(functionText);
+                    scientificDisplayController.append(functionText);
+                }
+                break;
             default:
                 String clickedButtonText = sourceBtn.getText();
                 if (!scientificInputValidator.isValid(clickedButtonText)) return;
