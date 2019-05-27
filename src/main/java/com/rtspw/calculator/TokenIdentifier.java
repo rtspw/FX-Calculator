@@ -15,7 +15,7 @@ class TokenIdentifier {
         isNumber = StringUtil.isNumber(token);
         isLeftParentheses = StringUtil.isLeftParentheses(token);
         isRightParentheses = StringUtil.isRightParentheses(token);
-        isFunction = false; //To-Do
+        isFunction = StringUtil.isFunction(token);
     }
 
     String getToken() {

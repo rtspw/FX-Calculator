@@ -17,32 +17,32 @@ class InputValidator {
         final TokenIdentifier current = new TokenIdentifier(input);
         final TokenIdentifier prev = new TokenIdentifier(prevToken);
 
-        if (current.isLeftParentheses() && prev.isNumber() && !inputIsEmpty()) return false;
+        if (current.isRightParentheses() && parenthesesCount == 0) return false;
         if (current.isRightParentheses() && prev.isOperator()) return false;
         if (current.isRightParentheses() && prev.isLeftParentheses()) return false;
+        if (current.isLeftParentheses() && prev.isNumber() && !inputIsEmpty()) return false;
         if (current.isLeftParentheses() && prev.isRightParentheses()) return false;
         if (current.isNumber() && prev.isRightParentheses()) return false;
         if (current.isOperator() && prev.isLeftParentheses()) return false;
         if (current.isOperator() && inputIsEmpty()) return false;
         if (current.isOperator() && prev.isOperator()) return false;
 
-        if (current.isLeftParentheses()) {
-            parenthesesCount += 1;
-        } else if (current.isRightParentheses()) {
-            if (parenthesesCount == 0) return false;
-            parenthesesCount -= 1;
-        }
-
         return true;
     }
 
     boolean isExpressionComplete() {
         final TokenIdentifier prevToken = new TokenIdentifier(tokens.peek());
-        return prevToken.isNumber() || prevToken.isRightParentheses() && parenthesesCount == 0;
+        return (prevToken.isNumber() || prevToken.isRightParentheses()) && parenthesesCount == 0;
     }
 
-    void addToken(String token) {
+    InputValidator addToken(String token) {
         this.tokens.push(token);
+        final TokenIdentifier current = new TokenIdentifier(token);
+        if (current.isLeftParentheses())
+            parenthesesCount += 1;
+        else if (current.isRightParentheses() && parenthesesCount != 0)
+            parenthesesCount -= 1;
+        return this;
     }
 
     void removeToken() {

@@ -10,6 +10,10 @@ class DisplayController {
         display.setText(text);
     }
 
+    private boolean lastTokenHasWhitespace() {
+        return StringUtil.getLastChar(text) == ' ';
+    }
+
     DisplayController(Label display) {
         this.display = display;
         text = "";
@@ -28,10 +32,10 @@ class DisplayController {
 
     void unappend() {
         if (text.length() == 0) return;
-        if (text.charAt(text.length() - 1) == ' ') {
-            text = text.substring(0, text.length() - 1);
-        }
-        text = text.substring(0, text.length() - 1);
+        if (lastTokenHasWhitespace())
+            text = StringUtil.popChars(text, 2);
+        else
+            text = StringUtil.popChars(text, 1);
         updateDisplay();
     }
 }

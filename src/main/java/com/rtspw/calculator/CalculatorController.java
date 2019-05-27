@@ -7,18 +7,18 @@ import javafx.scene.input.MouseEvent;
 
 public class CalculatorController {
 
-    @FXML
-    private Label simpleCalcDisplay;
     private DisplayController displayController;
     private InputValidator inputValidator;
+    private boolean invalidPreviousExpression = false;
+
+    @FXML
+    private Label simpleCalcDisplay;
 
     @FXML
     private void initialize() {
         this.displayController = new DisplayController(simpleCalcDisplay);
         this.inputValidator = new InputValidator();
     }
-
-    private boolean invalidPreviousExpression = false;
 
     @FXML
     private void handleSimpleCalcButton(MouseEvent event) {
@@ -50,7 +50,7 @@ public class CalculatorController {
                 String clickedButtonText = sourceBtn.getText();
                 if (inputValidator.isValid(clickedButtonText)) {
                     inputValidator.addToken(clickedButtonText);
-                    displayController.append(addWhitespace(clickedButtonText));
+                    displayController.append(addWhitespaceToOperators(clickedButtonText));
                 }
         }
     }
@@ -65,7 +65,7 @@ public class CalculatorController {
         displayController.append(finalValue);
     }
 
-    private String addWhitespace(String buttonText) {
+    private String addWhitespaceToOperators(String buttonText) {
         final TokenIdentifier text = new TokenIdentifier(buttonText);
         if (text.isOperator()) return " " + buttonText + " ";
         return buttonText;
