@@ -73,19 +73,38 @@ public class InputValidatorTest {
         assertFalse(iv.isValid("+"));
     }
 
-    @Test
-    public void negativeNumbersTest() {
-        assertTrue(iv.isValid("±"));
-        iv.addToken("±");
-        assertFalse(iv.isValid("±"));
-        assertFalse(iv.isValid("-"));
-        assertFalse(iv.isValid(")"));
-        assertTrue(iv.isValid("2"));
-    }
+//    @Test
+//    public void negativeNumbersTest() {
+//        assertTrue(iv.isValid("±"));
+//        iv.addToken("±");
+//        assertFalse(iv.isValid("±"));
+//        assertFalse(iv.isValid("-"));
+//        assertFalse(iv.isValid(")"));
+//        assertTrue(iv.isValid("2"));
+//    }
 
     @Test
     public void unaryFunctionTest() {
         iv.addToken("sin(");
         assertFalse(iv.isValid(")"));
+    }
+
+    @Test
+    public void decimalPointTest() {
+        assertTrue(iv.isValid("."));
+        iv.addToken(".").addToken("2");
+        assertFalse(iv.isValid("."));
+    }
+
+    @Test
+    public void decimalPointTest2() {
+        iv.addToken("3").addToken("2");
+        assertTrue(iv.isValid("."));
+        iv.addToken(".").addToken("4").addToken("5");
+        assertFalse(iv.isValid("."));
+        iv.addToken("+");
+        assertTrue(iv.isValid("."));
+        iv.addToken(".").addToken("2");
+        assertFalse(iv.isValid("."));
     }
 }
