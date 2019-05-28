@@ -3,48 +3,38 @@ package com.rtspw.calculator;
 class TokenIdentifier {
 
     private String token;
-    private boolean isOperator;
-    private boolean isNumber;
-    private boolean isLeftParentheses;
-    private boolean isRightParentheses;
-    private boolean isFunction;
-    private boolean isPowFunction;
-    private boolean isDot;
 
     TokenIdentifier(String token) {
         this.token = token;
-        isOperator = StringUtil.isOperator(token);
-        isNumber = StringUtil.isNumber(token);
-        isFunction = StringUtil.isFunction(token);
-        isLeftParentheses = token.contains("(");
-        isRightParentheses = token.contains(")");
-        isPowFunction = token.contains("^");
-        isDot = token.contains(".");
     }
 
     boolean isOperator() {
-        return isOperator;
+        return StringUtil.isOperator(token);
     }
 
     boolean isNumber() {
-        return isNumber;
+        return StringUtil.isNumber(token);
     }
 
     boolean isLeftParentheses() {
-        return isLeftParentheses;
+        return token.contains("(");
     }
 
     boolean isRightParentheses() {
-        return isRightParentheses;
+        return token.contains(")");
     }
 
-    boolean isDot() { return isDot; }
+    boolean isDot() { 
+        return token.contains(".");
+    }
 
     boolean isFunction() {
-        return isFunction;
+        return StringUtil.isFunction(token);
     }
 
-    boolean isPowFunction() { return isPowFunction; }
+    boolean isPowFunction() {
+        return token.contains("^");
+    }
 
     // temporary debug function
     @Override
