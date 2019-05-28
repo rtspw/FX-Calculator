@@ -20,16 +20,6 @@ class StringUtil {
         return str.chars().mapToObj(c -> (char)c).allMatch(isOperator);
     }
 
-    static boolean isLeftParentheses(String str) {
-        if (str.isEmpty()) return false;
-        return getLastChar(str) == '(';
-    }
-
-    static boolean isRightParentheses(String str) {
-        if (str.isEmpty()) return false;
-        return getLastChar(str) == ')';
-    }
-
     static boolean isFunction(String str) {
         return str.length() >= 2 && getLastChar(str) == '(';
     }
