@@ -1,19 +1,30 @@
 package com.rtspw.calculator;
 
+import java.util.function.Predicate;
+
 class TokenIdentifier {
 
     private String token;
+    final static private char[] operators = {'+', '-', '×', '÷'};
 
     TokenIdentifier(String token) {
         this.token = token;
     }
 
     boolean isOperator() {
-        return StringUtil.isOperator(token);
+        final Predicate<Character> isOperator = c -> {
+            for(char op : operators) {
+                if (c == op) return true;
+            }
+            return false;
+        };
+        token.chars().mapToObj(c -> (char)c).
+        return token.chars().mapToObj(c -> (char)c).allMatch(isOperator);
     }
 
     boolean isNumber() {
-        return StringUtil.isNumber(token);
+        if (token.isEmpty()) return false;
+        return token.chars().allMatch(Character::isDigit);
     }
 
     boolean isLeftParentheses() {
@@ -29,7 +40,7 @@ class TokenIdentifier {
     }
 
     boolean isFunction() {
-        return StringUtil.isFunction(token);
+        return token.length() >= 2 && StringUtil.getLastChar(token) == '(';
     }
 
     boolean isPowFunction() {
