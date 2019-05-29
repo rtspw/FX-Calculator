@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 class TokenIdentifier {
 
     private String token;
-    final static private char[] operators = {'+', '-', '×', '÷'};
+    final static private char[] operators = {'+', '-', '×', '÷', '^'};
 
     TokenIdentifier(String token) {
         this.token = token;
@@ -44,10 +44,10 @@ class TokenIdentifier {
     }
 
     boolean isFunction() {
-        return token.length() >= 2 && StringUtil.getLastChar(token) == '(';
+        return token.length() >= 2 && token.chars().allMatch(c -> Character.isAlphabetic(c) || c == '(');
     }
 
-    boolean isPowFunction() {
+    boolean isPowFunctionWithParentheses() {
         if (token.length() < 2) return false;
         return token.charAt(token.length() - 2) == '^';
     }
@@ -61,7 +61,7 @@ class TokenIdentifier {
         if (hasLeftParentheses()) properties += "lp, ";
         if (hasRightParentheses()) properties += "rp, ";
         if (isFunction()) properties += "function, ";
-        if (isPowFunction()) properties += "pow, ";
+        if (isPowFunctionWithParentheses()) properties += "pow, ";
         if (hasDot()) properties += "dot, ";
         properties += "]";
         return properties;

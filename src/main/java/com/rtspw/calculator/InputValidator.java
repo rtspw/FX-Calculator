@@ -42,10 +42,10 @@ class InputValidator {
         if (current.hasRightParentheses() && parenthesesCount == 0) return false;
         if (current.hasRightParentheses() && prev.isOperator()) return false;
         if (current.hasRightParentheses() && prev.hasLeftParentheses()) return false;
-        if (current.hasLeftParentheses() && !current.isPowFunction() && prev.isNumeral() && !inputIsEmpty()) return false;
-        if (current.hasLeftParentheses() && !current.isPowFunction() && prev.hasRightParentheses()) return false;
+        if (current.hasLeftParentheses() && !current.isPowFunctionWithParentheses() && prev.isNumeral() && !inputIsEmpty()) return false;
+        if (current.hasLeftParentheses() && !current.isPowFunctionWithParentheses() && prev.hasRightParentheses()) return false;
         if (current.hasLeftParentheses() && prev.hasDot()) return false;
-        if (current.isPowFunction() && !prev.isNumeral() && !prev.hasRightParentheses()) return false;
+        if (current.isPowFunctionWithParentheses() && !prev.isNumeral() && !prev.hasRightParentheses()) return false;
         if (current.isNumeral() && prev.hasRightParentheses()) return false;
         if (current.isOperator() && prev.hasLeftParentheses()) return false;
         if (current.isOperator() && inputIsEmpty()) return false;

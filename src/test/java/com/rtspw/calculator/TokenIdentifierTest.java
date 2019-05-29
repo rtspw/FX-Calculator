@@ -14,7 +14,7 @@ public class TokenIdentifierTest {
         assertFalse(token.isNumeral());
         assertFalse(token.hasLeftParentheses());
         assertFalse(token.hasRightParentheses());
-        assertFalse(token.isPowFunction());
+        assertFalse(token.isPowFunctionWithParentheses());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class TokenIdentifierTest {
         assertFalse(token.isOperator());
         assertFalse(token.hasLeftParentheses());
         assertFalse(token.hasRightParentheses());
-        assertFalse(token.isPowFunction());
+        assertFalse(token.isPowFunctionWithParentheses());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class TokenIdentifierTest {
         assertFalse(token.isOperator());
         assertFalse(token.hasLeftParentheses());
         assertFalse(token.hasRightParentheses());
-        assertFalse(token.isPowFunction());
+        assertFalse(token.isPowFunctionWithParentheses());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class TokenIdentifierTest {
         assertFalse(token.isOperator());
         assertFalse(token.hasLeftParentheses());
         assertFalse(token.hasRightParentheses());
-        assertFalse(token.isPowFunction());
+        assertFalse(token.isPowFunctionWithParentheses());
     }
 
     @Test
@@ -64,29 +64,41 @@ public class TokenIdentifierTest {
         assertFalse(token.hasDot());
         assertFalse(token.isOperator());
         assertFalse(token.hasRightParentheses());
-        assertFalse(token.isPowFunction());
+        assertFalse(token.isPowFunctionWithParentheses());
+    }
+
+    @Test
+    public void functionTest2() {
+        TokenIdentifier token = new TokenIdentifier("cos");
+        assertTrue(token.isFunction());
+        assertFalse(token.hasLeftParentheses());
+        assertFalse(token.isNumeral());
+        assertFalse(token.hasDot());
+        assertFalse(token.isOperator());
+        assertFalse(token.hasRightParentheses());
+        assertFalse(token.isPowFunctionWithParentheses());
     }
 
     @Test
     public void powerFunctionTest() {
         TokenIdentifier token = new TokenIdentifier("3^(");
         assertTrue(token.hasLeftParentheses());
-        assertTrue(token.isPowFunction());
+        assertTrue(token.isPowFunctionWithParentheses());
         assertFalse(token.hasRightParentheses());
         assertFalse(token.isNumeral());
         assertFalse(token.isOperator());
         assertFalse(token.hasDot());
     }
 
+
     @Test
     public void powerFunctionTest2() {
-        TokenIdentifier token = new TokenIdentifier("3^(2.3)");
-        assertTrue(token.hasLeftParentheses());
-        assertTrue(token.hasRightParentheses());
-        assertTrue(token.hasDot());
-        assertFalse(token.isPowFunction());
+        TokenIdentifier token = new TokenIdentifier("^");
+        assertTrue(token.isOperator());
+        assertFalse(token.hasLeftParentheses());
+        assertFalse(token.hasRightParentheses());
+        assertFalse(token.hasDot());
+        assertFalse(token.isPowFunctionWithParentheses());
         assertFalse(token.isNumeral());
-        assertFalse(token.isOperator());
     }
-
 }

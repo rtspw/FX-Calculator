@@ -31,7 +31,7 @@ class DisplayController {
         TokenIdentifier lastToken = new TokenIdentifier(StringUtil.getLastWord(text));
         if (lastToken.isOperator())
             text = StringUtil.popChars(text, 3);
-        else if (lastToken.isPowFunction())
+        else if (lastToken.isPowFunctionWithParentheses())
             text = StringUtil.popChars(text, 2);
         else if (lastToken.isFunction())
             text = StringUtil.popChars(text, 4);
