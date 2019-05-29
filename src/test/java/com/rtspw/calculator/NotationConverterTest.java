@@ -2,6 +2,9 @@ package com.rtspw.calculator;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class NotationConverterTest {
@@ -12,7 +15,6 @@ public class NotationConverterTest {
     }
 
     @Test
-    @Ignore("In progress")
     public void BasicOperatorsTest() {
         assertEquals("3 2 +", NotationConverter.infixToPostfix("3 + 2"));
         assertEquals("2 3 +", NotationConverter.infixToPostfix("2 + 3"));
@@ -25,14 +27,13 @@ public class NotationConverterTest {
     }
 
     @Test
-    @Ignore("Still in progress")
     public void NegativeNumbersTest() {
+        Arrays.stream(EquationTokenizer.tokenizeEquation("3 + -2")).forEach(System.out::println);
         assertEquals("3 -2 +", NotationConverter.infixToPostfix("3 + -2"));
         assertEquals("-3 -2 -", NotationConverter.infixToPostfix("-3 - -2"));
     }
 
     @Test
-    @Ignore("Still in progress")
     public void orderOfOperationsTest() {
         assertEquals("3 2 4 * +", NotationConverter.infixToPostfix("3 + 2 * 4"));
         assertEquals("3 2 * 4 *", NotationConverter.infixToPostfix("3 * 2 * 4"));
@@ -41,7 +42,6 @@ public class NotationConverterTest {
     }
 
     @Test
-    @Ignore("Still in progress")
     public void unaryFunctionTest() {
         assertEquals("3 sin", NotationConverter.infixToPostfix("sin(3)"));
         assertEquals("2 5 3 + cos -", NotationConverter.infixToPostfix("2 - cos(5 + 3)"));

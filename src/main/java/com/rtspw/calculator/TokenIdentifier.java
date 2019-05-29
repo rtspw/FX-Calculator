@@ -5,10 +5,14 @@ import java.util.function.Predicate;
 class TokenIdentifier {
 
     private String token;
-    final static private char[] operators = {'+', '-', '×', '÷', '^'};
+    final static private char[] operators = {'+', '-', '×', '*', '/', '÷', '^'};
 
     TokenIdentifier(String token) {
         this.token = token;
+    }
+
+    String getToken() {
+        return this.token;
     }
 
     boolean isOperator() {
@@ -23,7 +27,8 @@ class TokenIdentifier {
 
     boolean isNumber() {
         if (token.isEmpty()) return false;
-        return token.chars().allMatch(c -> Character.isDigit(c) || c == '.');
+        if (token.charAt(0) == '-' && token.length() < 2) return false;
+        return token.chars().allMatch(c -> Character.isDigit(c) || c == '.' || c == '-');
     }
 
     boolean isNumeral() {

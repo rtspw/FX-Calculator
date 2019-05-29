@@ -18,6 +18,30 @@ public class TokenIdentifierTest {
     }
 
     @Test
+    public void isOperatorTest2() {
+        TokenIdentifier token = new TokenIdentifier("/");
+        assertTrue(token.isOperator());
+        assertFalse(token.hasDot());
+        assertFalse(token.isFunction());
+        assertFalse(token.isNumeral());
+        assertFalse(token.hasLeftParentheses());
+        assertFalse(token.hasRightParentheses());
+        assertFalse(token.isPowFunctionWithParentheses());
+    }
+
+    @Test
+    public void isOperatorTest3() {
+        TokenIdentifier token = new TokenIdentifier("÷");
+        assertTrue(token.isOperator());
+        assertFalse(token.hasDot());
+        assertFalse(token.isFunction());
+        assertFalse(token.isNumeral());
+        assertFalse(token.hasLeftParentheses());
+        assertFalse(token.hasRightParentheses());
+        assertFalse(token.isPowFunctionWithParentheses());
+    }
+
+    @Test
     public void isNumeralTest() {
         TokenIdentifier token = new TokenIdentifier("1");
         assertTrue(token.isNumeral());

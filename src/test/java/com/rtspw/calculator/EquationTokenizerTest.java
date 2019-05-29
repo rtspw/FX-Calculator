@@ -24,4 +24,10 @@ public class EquationTokenizerTest {
         String[] expected2 = {"2", "^", "(", "4", "^", "(", ".2", ")", ")"};
         assertArrayEquals(expected2, EquationTokenizer.tokenizeEquation("2^(4^(.2))"));
     }
+
+    @Test
+    public void negativeTest() {
+        String[] expected = {"-2", "-", "-3"};
+        assertArrayEquals(expected, EquationTokenizer.tokenizeEquation("-2 - -3"));
+    }
 }
