@@ -27,7 +27,7 @@ class InputValidator {
         do {
             top = copiedTokens.pop();
             topInfo = new TokenIdentifier(top);
-            if (topInfo.isDot()) return true;
+            if (topInfo.hasDot()) return true;
         } while (topInfo.isNumber());
         return false;
     }
@@ -37,17 +37,17 @@ class InputValidator {
         final TokenIdentifier current = new TokenIdentifier(input);
         final TokenIdentifier prev = new TokenIdentifier(prevToken);
 
-        if (current.isDot() && numberBlockAlreadyHasDot()) return false;
-        if (current.isDot() && prev.isRightParentheses()) return false;
-        if (current.isRightParentheses() && parenthesesCount == 0) return false;
-        if (current.isRightParentheses() && prev.isOperator()) return false;
-        if (current.isRightParentheses() && prev.isLeftParentheses()) return false;
-        if (current.isLeftParentheses() && !current.isPowFunction() && prev.isNumber() && !inputIsEmpty()) return false;
-        if (current.isLeftParentheses() && !current.isPowFunction() && prev.isRightParentheses()) return false;
-        if (current.isLeftParentheses() && prev.isDot()) return false;
-        if (current.isPowFunction() && !prev.isNumber() && !prev.isRightParentheses()) return false;
-        if (current.isNumber() && prev.isRightParentheses()) return false;
-        if (current.isOperator() && prev.isLeftParentheses()) return false;
+        if (current.hasDot() && numberBlockAlreadyHasDot()) return false;
+        if (current.hasDot() && prev.hasRightParentheses()) return false;
+        if (current.hasRightParentheses() && parenthesesCount == 0) return false;
+        if (current.hasRightParentheses() && prev.isOperator()) return false;
+        if (current.hasRightParentheses() && prev.hasLeftParentheses()) return false;
+        if (current.hasLeftParentheses() && !current.isPowFunction() && prev.isNumber() && !inputIsEmpty()) return false;
+        if (current.hasLeftParentheses() && !current.isPowFunction() && prev.hasRightParentheses()) return false;
+        if (current.hasLeftParentheses() && prev.hasDot()) return false;
+        if (current.isPowFunction() && !prev.isNumber() && !prev.hasRightParentheses()) return false;
+        if (current.isNumber() && prev.hasRightParentheses()) return false;
+        if (current.isOperator() && prev.hasLeftParentheses()) return false;
         if (current.isOperator() && inputIsEmpty()) return false;
         if (current.isOperator() && prev.isOperator()) return false;
 
@@ -56,15 +56,15 @@ class InputValidator {
 
     boolean isExpressionComplete() {
         final TokenIdentifier prevToken = new TokenIdentifier(tokens.peek());
-        return (prevToken.isNumber() || prevToken.isRightParentheses()) && parenthesesCount == 0;
+        return (prevToken.isNumber() || prevToken.hasRightParentheses()) && parenthesesCount == 0;
     }
 
     InputValidator addToken(String token) {
         this.tokens.push(token);
         final TokenIdentifier current = new TokenIdentifier(token);
         System.out.println("Token added: " + token + " : " + current);
-        if (current.isLeftParentheses()) parenthesesCount += 1;
-        else if (current.isRightParentheses() && parenthesesCount != 0) parenthesesCount -= 1;
+        if (current.hasLeftParentheses()) parenthesesCount += 1;
+        if (current.hasRightParentheses() && parenthesesCount != 0) parenthesesCount -= 1;
         return this;
     }
 
@@ -72,8 +72,8 @@ class InputValidator {
         if (this.tokens.size() <= 1) return;
         final String poppedToken = this.tokens.pop();
         final TokenIdentifier top = new TokenIdentifier(poppedToken);
-        if (top.isLeftParentheses()) parenthesesCount -= 1;
-        if (top.isRightParentheses()) parenthesesCount += 1;
+        if (top.hasLeftParentheses()) parenthesesCount -= 1;
+        if (top.hasRightParentheses()) parenthesesCount += 1;
     }
 
     void resetTokens() {

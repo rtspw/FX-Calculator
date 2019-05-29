@@ -18,7 +18,6 @@ class TokenIdentifier {
             }
             return false;
         };
-        token.chars().mapToObj(c -> (char)c).
         return token.chars().mapToObj(c -> (char)c).allMatch(isOperator);
     }
 
@@ -27,15 +26,15 @@ class TokenIdentifier {
         return token.chars().allMatch(Character::isDigit);
     }
 
-    boolean isLeftParentheses() {
+    boolean hasLeftParentheses() {
         return token.contains("(");
     }
 
-    boolean isRightParentheses() {
+    boolean hasRightParentheses() {
         return token.contains(")");
     }
 
-    boolean isDot() {
+    boolean hasDot() {
         return token.contains(".");
     }
 
@@ -54,11 +53,11 @@ class TokenIdentifier {
         String properties = "[";
         if (isOperator()) properties += "operator, ";
         if (isNumber()) properties += "number, ";
-        if (isLeftParentheses()) properties += "lp, ";
-        if (isRightParentheses()) properties += "rp, ";
+        if (hasLeftParentheses()) properties += "lp, ";
+        if (hasRightParentheses()) properties += "rp, ";
         if (isFunction()) properties += "function, ";
         if (isPowFunction()) properties += "pow, ";
-        if (isDot()) properties += "dot, ";
+        if (hasDot()) properties += "dot, ";
         properties += "]";
         return properties;
     }

@@ -10,10 +10,6 @@ class DisplayController {
         display.setText(text);
     }
 
-    private boolean lastTokenHasWhitespace() {
-        return StringUtil.getLastChar(text) == ' ';
-    }
-
     DisplayController(Label display) {
         this.display = display;
         text = "";
