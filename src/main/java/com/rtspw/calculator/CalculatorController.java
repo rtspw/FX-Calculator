@@ -68,7 +68,7 @@ public class CalculatorController {
 
     private void handleSimpleEqualsButtonAction() {
         if (!simpleInputValidator.isExpressionComplete()) return;
-        final String finalValue = "ERROR";
+        final String finalValue = NotationConverter.infixToPostfix(simpleCalcDisplay.getText());
         if (finalValue.equals("ERROR")) {
             invalidPreviousSimpleExpression = true;
         }
@@ -103,7 +103,7 @@ public class CalculatorController {
                 }
                 break;
             case "btnScientificEquals":
-                // to-do
+                handleScientificEqualsButtonAction();
                 break;
             case "btnScientificSin":
             case "btnScientificCos":
@@ -122,7 +122,16 @@ public class CalculatorController {
                 scientificInputValidator.addToken(clickedButtonText);
                 scientificDisplayController.append(addWhitespaceToOperators(clickedButtonText));
         }
+    }
 
+    private void handleScientificEqualsButtonAction() {
+        if (!scientificInputValidator.isExpressionComplete()) return;
+        final String finalValue = NotationConverter.infixToPostfix(scientificCalcDisplay.getText());
+        if (finalValue.equals("ERROR")) {
+            invalidPreviousScientificExpression = true;
+        }
+        scientificDisplayController.clear();
+        scientificDisplayController.append(finalValue);
     }
 
     private String addWhitespaceToOperators(String buttonText) {

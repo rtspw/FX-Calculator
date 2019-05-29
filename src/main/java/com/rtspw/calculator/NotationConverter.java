@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 class NotationConverter {
 
-    private static enum Associativity { LEFT, RIGHT }
+    private enum Associativity { LEFT, RIGHT }
     private static final HashMap<Character, Character> operatorConversionMap;
     private static final HashMap<String, Integer> operatorPrecedenceMap;
     private static final HashMap<String, Associativity> operatorAssociativityMap;
@@ -51,7 +51,8 @@ class NotationConverter {
     }
 
     static String infixToPostfix(String equation) {
-        String[] equationItems = EquationTokenizer.tokenizeEquation(equation);
+        String ASCIIEquation = UTF16ToASCIIOperators(equation);
+        String[] equationItems = EquationTokenizer.tokenizeEquation(ASCIIEquation);
 
         ArrayList<String> outputList = new ArrayList<>();
         Stack<TokenIdentifier> operatorStack = new Stack<>();
