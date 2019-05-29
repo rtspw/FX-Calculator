@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 class EquationTokenizer {
     static String[] tokenizeEquation(String equation) {
-        final String delimitSpacesAndParenthesesButKeepParentheses =
+        final String delimitSpacesCaretAndParenthesesButKeepCaretAndParentheses =
             " |((?<=[(])|(?=[(]))|((?<=[)])|(?=[)]))|((?<=[\\^])|(?=[\\^]))";
-        String[] equationTokens = equation.split(delimitSpacesAndParenthesesButKeepParentheses);
+        String[] equationTokens = equation.split(delimitSpacesCaretAndParenthesesButKeepCaretAndParentheses);
         Arrays.stream(removeEmptyTokens(equationTokens)).forEach(System.out::println);
         return removeEmptyTokens(equationTokens);
     }
