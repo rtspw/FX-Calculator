@@ -1,5 +1,6 @@
 package com.rtspw.calculator;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
@@ -31,12 +32,9 @@ class NotationConverter {
 
     static String infixToPostfix(String equation) {
         StringBuilder rpn = new StringBuilder();
-        String[] equationItems = equation.split(" ");
-        for (String test : equationItems) {
-            System.out.println(test);
-        }
+        String[] equationItems = EquationTokenizer.tokenizeEquation(equation);
+        Arrays.stream(equationItems).forEach(System.out::println);
         return "";
     }
-
 
 }
