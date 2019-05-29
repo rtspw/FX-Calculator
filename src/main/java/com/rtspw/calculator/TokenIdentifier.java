@@ -24,7 +24,7 @@ class TokenIdentifier {
         return token.contains(")");
     }
 
-    boolean isDot() { 
+    boolean isDot() {
         return token.contains(".");
     }
 
@@ -33,7 +33,8 @@ class TokenIdentifier {
     }
 
     boolean isPowFunction() {
-        return token.contains("^");
+        if (token.length() < 2) return false;
+        return token.charAt(token.length() - 2) == '^';
     }
 
     // temporary debug function

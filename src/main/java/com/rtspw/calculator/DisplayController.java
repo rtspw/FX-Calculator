@@ -32,8 +32,13 @@ class DisplayController {
 
     void unappend() {
         if (text.length() == 0) return;
-        if (lastTokenHasWhitespace())
+        TokenIdentifier lastToken = new TokenIdentifier(StringUtil.getLastWord(text));
+        if (lastToken.isOperator())
+            text = StringUtil.popChars(text, 3);
+        else if (lastToken.isPowFunction())
             text = StringUtil.popChars(text, 2);
+        else if (lastToken.isFunction())
+            text = StringUtil.popChars(text, 4);
         else
             text = StringUtil.popChars(text, 1);
         updateDisplay();
