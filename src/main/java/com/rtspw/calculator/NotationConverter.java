@@ -5,25 +5,38 @@ import java.util.stream.Collectors;
 
 class NotationConverter {
 
-    private static final HashMap<Character, Character> operatorMap;
+    private static final HashMap<Character, Character> operatorConversionMap;
+    private static final HashMap<Character, Integer> operatorAssociativityMap;
     static {
-        operatorMap = new HashMap<>();
-        operatorMap.put('×', '*');
-        operatorMap.put('÷', '/');
-        operatorMap.put('±', '-');
-
-    }
-
-    static String infixToPostfix(String equation) {
-        return "";
+        operatorConversionMap = new HashMap<>();
+        operatorConversionMap.put('×', '*');
+        operatorConversionMap.put('÷', '/');
+        operatorConversionMap.put('±', '-');
+        operatorAssociativityMap = new HashMap<>();
+        operatorAssociativityMap.put('^', 4);
+        operatorAssociativityMap.put('*', 3);
+        operatorAssociativityMap.put('/', 3);
+        operatorAssociativityMap.put('+', 2);
+        operatorAssociativityMap.put('-', 2);
     }
 
     static String UTF16ToASCIIOperators(String equation) {
         return equation.codePoints()
                 .mapToObj(c -> (char)c)
-                .map(c -> operatorMap.getOrDefault(c, c))
+                .map(c -> operatorConversionMap.getOrDefault(c, c))
                 .map(Object::toString)
                 .collect(Collectors.joining());
 
     }
+
+    static String infixToPostfix(String equation) {
+        StringBuilder rpn = new StringBuilder();
+        String[] equationItems = equation.split(" ");
+        for (String test : equationItems) {
+            System.out.println(test);
+        }
+        return "";
+    }
+
+
 }
