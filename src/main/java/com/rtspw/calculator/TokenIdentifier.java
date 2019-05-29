@@ -23,6 +23,11 @@ class TokenIdentifier {
 
     boolean isNumber() {
         if (token.isEmpty()) return false;
+        return token.chars().allMatch(c -> Character.isDigit(c) || c == '.');
+    }
+
+    boolean isNumeral() {
+        if (token.isEmpty()) return false;
         return token.chars().allMatch(Character::isDigit);
     }
 
@@ -52,7 +57,7 @@ class TokenIdentifier {
     public String toString() {
         String properties = "[";
         if (isOperator()) properties += "operator, ";
-        if (isNumber()) properties += "number, ";
+        if (isNumeral()) properties += "number, ";
         if (hasLeftParentheses()) properties += "lp, ";
         if (hasRightParentheses()) properties += "rp, ";
         if (isFunction()) properties += "function, ";
