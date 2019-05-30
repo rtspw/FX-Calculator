@@ -68,7 +68,7 @@ public class CalculatorController {
 
     private void handleSimpleEqualsButtonAction() {
         if (!simpleInputValidator.isExpressionComplete()) return;
-        final String finalValue = NotationConverter.infixToPostfix(simpleCalcDisplay.getText());
+        final String finalValue = Calculator.parseInfixEquation(simpleCalcDisplay.getText());
         if (finalValue.equals("ERROR")) {
             invalidPreviousSimpleExpression = true;
         }
@@ -126,7 +126,7 @@ public class CalculatorController {
 
     private void handleScientificEqualsButtonAction() {
         if (!scientificInputValidator.isExpressionComplete()) return;
-        final String finalValue = NotationConverter.infixToPostfix(scientificCalcDisplay.getText());
+        final String finalValue = Calculator.parseInfixEquation(scientificCalcDisplay.getText());
         if (finalValue.equals("ERROR")) {
             invalidPreviousScientificExpression = true;
         }
