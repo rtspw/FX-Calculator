@@ -26,7 +26,6 @@ public class NotationConverterTest {
 
     @Test
     public void NegativeNumbersTest() {
-        Arrays.stream(EquationTokenizer.tokenizeEquation("3 + -2")).forEach(System.out::println);
         assertEquals("3 -2 +", NotationConverter.infixToPostfix("3 + -2"));
         assertEquals("-3 -2 -", NotationConverter.infixToPostfix("-3 - -2"));
     }

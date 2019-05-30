@@ -7,7 +7,6 @@ class EquationTokenizer {
         final String delimitSpacesCaretAndParenthesesButKeepCaretAndParentheses =
             " |((?<=[(])|(?=[(]))|((?<=[)])|(?=[)]))|((?<=[\\^])|(?=[\\^]))";
         String[] equationTokens = equation.split(delimitSpacesCaretAndParenthesesButKeepCaretAndParentheses);
-        Arrays.stream(removeEmptyTokens(equationTokens)).forEach(System.out::println);
         return removeEmptyTokens(equationTokens);
     }
 

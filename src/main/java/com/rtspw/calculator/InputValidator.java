@@ -62,7 +62,6 @@ class InputValidator {
     InputValidator addToken(String token) {
         this.tokens.push(token);
         final TokenIdentifier current = new TokenIdentifier(token);
-        System.out.println("Token added: " + token + " : " + current);
         if (current.hasLeftParentheses()) parenthesesCount += 1;
         if (current.hasRightParentheses() && parenthesesCount != 0) parenthesesCount -= 1;
         return this;

@@ -33,21 +33,20 @@ class NotationConverter {
         operatorAssociativityMap.put("-", Associativity.LEFT);
     }
 
-    static String UTF16ToASCIIOperators(String equation) {
-        return equation.codePoints()
-                .mapToObj(c -> (char)c)
-                .map(c -> operatorConversionMap.getOrDefault(c, c))
-                .map(Object::toString)
-                .collect(Collectors.joining());
-
-    }
-
     static private int getPrecedence(TokenIdentifier operatorToken) {
         return operatorPrecedenceMap.getOrDefault(operatorToken.getToken(), 0);
     }
 
     static private Associativity getAssociativity(TokenIdentifier operatorToken) {
         return operatorAssociativityMap.getOrDefault(operatorToken.getToken(), Associativity.LEFT);
+    }
+
+    static String UTF16ToASCIIOperators(String equation) {
+        return equation.codePoints()
+                .mapToObj(c -> (char)c)
+                .map(c -> operatorConversionMap.getOrDefault(c, c))
+                .map(Object::toString)
+                .collect(Collectors.joining());
     }
 
     static String infixToPostfix(String equation) {
