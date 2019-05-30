@@ -71,6 +71,11 @@ public class CalculatorController {
         final String finalValue = Calculator.parseInfixEquation(simpleCalcDisplay.getText());
         if (finalValue.equals("ERROR")) {
             invalidPreviousSimpleExpression = true;
+        } else {
+            finalValue.codePoints()
+                .mapToObj(c -> (char)c)
+                .map(String::valueOf)
+                .forEach(simpleInputValidator::addToken);
         }
         simpleDisplayController.clear();
         simpleDisplayController.append(finalValue);
@@ -126,9 +131,15 @@ public class CalculatorController {
 
     private void handleScientificEqualsButtonAction() {
         if (!scientificInputValidator.isExpressionComplete()) return;
+        scientificInputValidator.resetTokens();
         final String finalValue = Calculator.parseInfixEquation(scientificCalcDisplay.getText());
         if (finalValue.equals("ERROR")) {
             invalidPreviousScientificExpression = true;
+        } else {
+            finalValue.codePoints()
+                .mapToObj(c -> (char)c)
+                .map(String::valueOf)
+                .forEach(scientificInputValidator::addToken);
         }
         scientificDisplayController.clear();
         scientificDisplayController.append(finalValue);
