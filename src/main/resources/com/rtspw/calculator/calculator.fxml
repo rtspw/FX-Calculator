@@ -339,7 +339,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnScientificPow" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="300.0" prefWidth="300.0" styleClass="calc-button" stylesheets="@styles.css" text="^" textOverrun="CLIP" GridPane.rowIndex="4">
+                        <Button fx:id="btnScientificPow" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="^" textOverrun="CLIP" GridPane.rowIndex="4">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
