@@ -12,6 +12,8 @@ class Calculator {
     static private HashMap<String, BinaryOperator<Double>> operatorTokenToBinaryFunctionMap;
     static private HashMap<String, UnaryOperator<Double>> operatorTokenToUnaryFunctionMap;
     static private HashMap<String, Integer> operatorArityMap;
+    static private DecimalFormat formatter;
+
     static {
         operatorTokenToBinaryFunctionMap = new HashMap<>();
         operatorTokenToBinaryFunctionMap.put("+", Double::sum);
@@ -36,7 +38,13 @@ class Calculator {
         operatorArityMap.put("cos", 1);
         operatorArityMap.put("tan", 1);
         operatorArityMap.put("log", 1);
+
+        formatter = new DecimalFormat();
+        formatter.setDecimalSeparatorAlwaysShown(false);
+        formatter.setMaximumFractionDigits(10);
     }
+
+
 
     static String parseInfixEquation(String equation) {
         String rpn = NotationConverter.infixToPostfix(equation);
@@ -64,8 +72,6 @@ class Calculator {
             }
         });
 
-        DecimalFormat formatter = new DecimalFormat();
-        formatter.setDecimalSeparatorAlwaysShown(false);
         return formatter.format(equationParsingStack.pop());
     }
 
