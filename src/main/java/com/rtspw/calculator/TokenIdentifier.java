@@ -57,18 +57,4 @@ class TokenIdentifier {
         return token.charAt(token.length() - 2) == '^';
     }
 
-    // temporary debug function
-    @Override
-    public String toString() {
-        String properties = "[";
-        if (isOperator()) properties += "operator, ";
-        if (isNumeral()) properties += "number, ";
-        if (hasLeftParentheses()) properties += "lp, ";
-        if (hasRightParentheses()) properties += "rp, ";
-        if (isFunction()) properties += "function, ";
-        if (isPowFunctionWithParentheses()) properties += "pow, ";
-        if (hasDot()) properties += "dot, ";
-        properties += "]";
-        return properties;
-    }
 }
