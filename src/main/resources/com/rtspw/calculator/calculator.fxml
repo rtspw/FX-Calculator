@@ -272,11 +272,6 @@
                               <String fx:value="calc-button-operation" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="btnScientificPlusMinus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="±" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                         <Button fx:id="btnScientificDot" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="." GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -339,7 +334,21 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnScientificPow" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="^" textOverrun="CLIP" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <children>
+                              <Button fx:id="btnScientificPow" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="^" textOverrun="CLIP">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btnScientificPlusMinus" alignment="CENTER" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="±">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnScientificSqrt" alignment="CENTER" layoutX="15.0" layoutY="171.0" mnemonicParsing="false" onMousePressed="#handleScientificCalcButton" prefHeight="3000.0" prefWidth="3000.0" styleClass="calc-button" stylesheets="@styles.css" text="sqrt" textOverrun="CLIP" GridPane.rowIndex="4">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

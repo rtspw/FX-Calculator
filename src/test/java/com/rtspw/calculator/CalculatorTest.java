@@ -21,6 +21,7 @@ public class CalculatorTest {
         assertEquals(String.format("%.10f", Math.sin(Math.cos(3))), Calculator.parseInfixEquation("sin(cos(3))"));
         assertEquals(String.format("%.10f", Math.log(2 * 3) / Math.tan(2 * 4)),
                 Calculator.parseInfixEquation("log(2 * 3) / tan(2 * 4)"));
+        assertEquals("2", Calculator.parseInfixEquation("sqrt(4)"));
     }
 
 }

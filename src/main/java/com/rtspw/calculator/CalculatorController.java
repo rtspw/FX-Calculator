@@ -115,6 +115,7 @@ public class CalculatorController {
             case "btnScientificTan":
             case "btnScientificLog":
             case "btnScientificPow":
+            case "btnScientificSqrt":
                 String functionText = sourceBtn.getText() + "(";
                 if (scientificInputValidator.isValid(functionText)) {
                     scientificInputValidator.addToken(functionText);

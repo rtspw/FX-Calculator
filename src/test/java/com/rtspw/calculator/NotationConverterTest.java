@@ -3,8 +3,6 @@ package com.rtspw.calculator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
-
 public class NotationConverterTest {
 
     @Test
@@ -42,5 +40,6 @@ public class NotationConverterTest {
     public void unaryFunctionTest() {
         assertEquals("3 sin", NotationConverter.infixToPostfix("sin(3)"));
         assertEquals("2 5 3 + cos -", NotationConverter.infixToPostfix("2 - cos(5 + 3)"));
+        assertEquals("10 4 sqrt +", NotationConverter.infixToPostfix("10 + sqrt(4)"));
     }
 }

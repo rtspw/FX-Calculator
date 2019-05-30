@@ -125,4 +125,16 @@ public class TokenIdentifierTest {
         assertFalse(token.isPowFunctionWithParentheses());
         assertFalse(token.isNumeral());
     }
+
+    @Test
+    public void sqrtFunctionTest() {
+        TokenIdentifier token = new TokenIdentifier("sqrt(");
+        assertTrue(token.isFunction());
+        assertTrue(token.hasLeftParentheses());
+        assertFalse(token.hasRightParentheses());
+        assertFalse(token.hasDot());
+        assertFalse(token.isPowFunctionWithParentheses());
+        assertFalse(token.isNumeral());
+        assertFalse(token.isOperator());
+    }
 }

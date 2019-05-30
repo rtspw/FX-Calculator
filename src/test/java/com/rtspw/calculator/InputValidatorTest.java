@@ -102,6 +102,8 @@ public class InputValidatorTest {
     public void unaryFunctionTest() {
         iv.addToken("sin(");
         assertFalse(iv.isValid(")"));
+        iv.addToken("3").addToken(")").addToken("+");
+        assertTrue(iv.isValid("sqrt("));
     }
 
     @Test

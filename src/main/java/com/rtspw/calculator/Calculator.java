@@ -27,6 +27,7 @@ class Calculator {
         operatorTokenToUnaryFunctionMap.put("cos", Math::cos);
         operatorTokenToUnaryFunctionMap.put("tan", Math::tan);
         operatorTokenToUnaryFunctionMap.put("log", Math::log);
+        operatorTokenToUnaryFunctionMap.put("sqrt", Math::sqrt);
 
         operatorArityMap = new HashMap<>();
         operatorArityMap.put("+", 2);
@@ -38,6 +39,7 @@ class Calculator {
         operatorArityMap.put("cos", 1);
         operatorArityMap.put("tan", 1);
         operatorArityMap.put("log", 1);
+        operatorArityMap.put("sqrt", 1);
 
         formatter = new DecimalFormat();
         formatter.setDecimalSeparatorAlwaysShown(false);

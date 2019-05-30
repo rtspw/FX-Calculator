@@ -18,6 +18,12 @@ public class EquationTokenizerTest {
     }
 
     @Test
+    public void sqrtFunctionTest() {
+        String[] expected = {"3", "+", "sqrt", "(", "5", ")"};
+        assertArrayEquals(expected, EquationTokenizer.tokenizeEquation("3 + sqrt(5)"));
+    }
+
+    @Test
     public void powerTest() {
         String[] expected = {"2", "^", "(", "4", ")"};
         assertArrayEquals(expected, EquationTokenizer.tokenizeEquation("2^(4)"));
