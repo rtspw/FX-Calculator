@@ -73,15 +73,30 @@ public class InputValidatorTest {
         assertFalse(iv.isValid("+"));
     }
 
-//    @Test
-//    public void negativeNumbersTest() {
-//        assertTrue(iv.isValid("±"));
-//        iv.addToken("±");
-//        assertFalse(iv.isValid("±"));
-//        assertFalse(iv.isValid("-"));
-//        assertFalse(iv.isValid(")"));
-//        assertTrue(iv.isValid("2"));
-//    }
+    @Test
+    public void negativeNumbersTest() {
+        assertTrue(iv.isValid("±"));
+        iv.addToken("±");
+        assertFalse(iv.isValid("±"));
+        assertFalse(iv.isValid("-"));
+        assertFalse(iv.isValid(")"));
+        assertTrue(iv.isValid("2"));
+    }
+
+    @Test
+    public void negativeNumbersTest2() {
+        iv.addToken("(");
+        assertTrue(iv.isValid("±"));
+        iv.addToken("2");
+        assertFalse(iv.isValid("±"));
+        iv.addToken(")");
+        assertFalse(iv.isValid("±"));
+        iv.addToken("+");
+        iv.addToken(".");
+        assertFalse(iv.isValid("±"));
+        iv.addToken("2").addToken("-");
+        assertTrue(iv.isValid("±"));
+    }
 
     @Test
     public void unaryFunctionTest() {

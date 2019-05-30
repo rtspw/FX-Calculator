@@ -57,4 +57,8 @@ class TokenIdentifier {
         return token.charAt(token.length() - 2) == '^';
     }
 
+    boolean isSpecialNegativeSymbol() {
+        return token.equals("±");
+    }
+
 }

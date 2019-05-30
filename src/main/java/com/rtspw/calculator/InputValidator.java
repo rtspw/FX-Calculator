@@ -50,6 +50,9 @@ class InputValidator {
         if (current.isOperator() && prev.hasLeftParentheses()) return false;
         if (current.isOperator() && inputIsEmpty()) return false;
         if (current.isOperator() && prev.isOperator()) return false;
+        if (!current.isNumber() && prev.isSpecialNegativeSymbol()) return false;
+        if (current.isSpecialNegativeSymbol() && prev.isNumber()) return false;
+        if (current.isSpecialNegativeSymbol() && prev.hasRightParentheses()) return false;
 
         return true;
     }
