@@ -16,6 +16,10 @@ class DisplayController {
         updateDisplay();
     }
 
+    String getText() {
+        return display.getText();
+    }
+
     void clear() {
         text = "";
         updateDisplay();
@@ -29,6 +33,7 @@ class DisplayController {
     void unappend() {
         if (text.length() == 0) return;
         TokenIdentifier lastToken = new TokenIdentifier(StringUtil.getLastWord(text));
+        System.out.println(lastToken.isOperator());
         if (lastToken.isOperator())
             text = StringUtil.popChars(text, 3);
         else if (lastToken.isPowFunctionWithParentheses())
