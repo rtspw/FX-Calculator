@@ -73,7 +73,7 @@ class ScientificCalcButtonHandler extends ButtonHandler {
         String clickedButtonText = sourceButtonOfCurrentEvent.getText();
         if (!inputValidator.isValid(clickedButtonText)) return;
         inputValidator.addToken(clickedButtonText);
-        displayController.append(addWhitespaceToOperators(clickedButtonText));
+        displayController.append(super.addWhitespaceToOperators(clickedButtonText));
     }
 
     private void handlePreviousErrors() {
@@ -104,9 +104,4 @@ class ScientificCalcButtonHandler extends ButtonHandler {
         displayController.append(finalValue);
     }
 
-    private String addWhitespaceToOperators(String buttonText) {
-        final TokenIdentifier text = new TokenIdentifier(buttonText);
-        if (text.isOperator()) return " " + buttonText + " ";
-        return buttonText;
-    }
 }

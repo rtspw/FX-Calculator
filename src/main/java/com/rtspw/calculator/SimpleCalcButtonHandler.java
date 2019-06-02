@@ -58,7 +58,7 @@ class SimpleCalcButtonHandler extends ButtonHandler {
         String clickedButtonText = sourceButtonOfCurrentEvent.getText();
         if (!simpleInputValidator.isValid(clickedButtonText)) return;
         simpleInputValidator.addToken(clickedButtonText);
-        displayController.append(addWhitespaceToOperators(clickedButtonText));
+        displayController.append(super.addWhitespaceToOperators(clickedButtonText));
     }
 
     private String getIDOfCurrentEvent() {
@@ -89,9 +89,4 @@ class SimpleCalcButtonHandler extends ButtonHandler {
         displayController.append(finalValue);
     }
 
-    private String addWhitespaceToOperators(String buttonText) {
-        final TokenIdentifier text = new TokenIdentifier(buttonText);
-        if (text.isOperator()) return " " + buttonText + " ";
-        return buttonText;
-    }
 }

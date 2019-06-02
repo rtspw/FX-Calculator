@@ -54,29 +54,25 @@ class Calculator {
         String[] tokens = rpn.split(" ");
         Stack<Double> equationParsingStack = new Stack<>();
 
-        try {
-            Arrays.stream(tokens).forEach(token -> {
-                TokenIdentifier current = new TokenIdentifier(token);
-                if (current.isNumber()) {
-                    equationParsingStack.push(Double.parseDouble(token));
-                    return;
-                }
+        Arrays.stream(tokens).forEach(token -> {
+            TokenIdentifier current = new TokenIdentifier(token);
+            if (current.isNumber()) {
+                equationParsingStack.push(Double.parseDouble(token));
+                return;
+            }
 
-                int operatorArity = operatorArityMap.get(token);
-                if (operatorArity == 1) {
-                    UnaryOperator<Double> op = operatorTokenToUnaryFunctionMap.get(token);
-                    Double num = equationParsingStack.pop();
-                    equationParsingStack.push(op.apply(num));
-                } else if (operatorArity == 2) {
-                    BinaryOperator<Double> op = operatorTokenToBinaryFunctionMap.get(token);
-                    Double num2 = equationParsingStack.pop();
-                    Double num1 = equationParsingStack.pop();
-                    equationParsingStack.push(op.apply(num1, num2));
-                }
-            });
-        } catch(Error e) {
-            return "ERROR";
-        }
+            int operatorArity = operatorArityMap.get(token);
+            if (operatorArity == 1) {
+                UnaryOperator<Double> op = operatorTokenToUnaryFunctionMap.get(token);
+                Double num = equationParsingStack.pop();
+                equationParsingStack.push(op.apply(num));
+            } else if (operatorArity == 2) {
+                BinaryOperator<Double> op = operatorTokenToBinaryFunctionMap.get(token);
+                Double num2 = equationParsingStack.pop();
+                Double num1 = equationParsingStack.pop();
+                equationParsingStack.push(op.apply(num1, num2));
+            }
+        });
 
         return formatter.format(equationParsingStack.pop());
     }

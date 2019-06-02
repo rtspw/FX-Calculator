@@ -1,10 +1,6 @@
 package com.rtspw.calculator;
 
 class StringUtil {
-    static char getLastChar(String str) {
-        return str.charAt(str.length() - 1);
-    }
-
     static String popChars(String str, int amount) {
         return str.substring(0, str.length() - (amount));
     }

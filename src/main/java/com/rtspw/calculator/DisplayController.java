@@ -33,8 +33,7 @@ class DisplayController {
     void unappend() {
         if (text.length() == 0) return;
         TokenIdentifier lastToken = new TokenIdentifier(StringUtil.getLastWord(text));
-        System.out.println(lastToken.isOperator());
-        if (lastToken.isOperator())
+        if (lastToken.isOperator() && text.length() >= 3)
             text = StringUtil.popChars(text, 3);
         else if (lastToken.isPowFunctionWithParentheses())
             text = StringUtil.popChars(text, 2);
