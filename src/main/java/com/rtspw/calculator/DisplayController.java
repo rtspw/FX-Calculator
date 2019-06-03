@@ -37,8 +37,9 @@ class DisplayController {
             text = StringUtil.popChars(text, 3);
         else if (lastToken.isPowFunctionWithParentheses())
             text = StringUtil.popChars(text, 2);
-        else if (lastToken.isFunction())
-            text = StringUtil.popChars(text, 4);
+        else if (lastToken.isFunction()) {
+            text = StringUtil.popChars(text, lastToken.getToken().length());
+        }
         else
             text = StringUtil.popChars(text, 1);
         updateDisplay();
