@@ -17,6 +17,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("calculator"));
         stage.setMinHeight(400);
         stage.setMinWidth(500);
+        stage.setTitle("Rtspw FX Calculator");
         stage.setScene(scene);
         stage.show();
     }
