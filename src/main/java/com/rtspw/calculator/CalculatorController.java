@@ -17,8 +17,16 @@ public class CalculatorController {
 
     @FXML
     private void initialize() {
-        this.simpleButtonHandler = new SimpleCalcButtonHandler(simpleCalcDisplay);
-        this.scientificButtonHandler = new ScientificCalcButtonHandler(scientificCalcDisplay);
+        simpleButtonHandler = new SimpleCalcButtonHandler(
+            simpleCalcDisplay,
+            new BasicInputValidator(),
+            new InfixEquationSolver()
+        );
+        scientificButtonHandler = new ScientificCalcButtonHandler(
+            scientificCalcDisplay,
+            new BasicInputValidator(),
+            new InfixEquationSolver()
+        );
     }
 
     @FXML

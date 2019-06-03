@@ -5,13 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class InputValidatorTest {
+public class BasicInputValidatorTest {
 
-    private InputValidator iv;
+    private BasicInputValidator iv;
 
     @Before
     public void setUpInputValidator() {
-        iv = new InputValidator();
+        iv = new BasicInputValidator();
     }
 
     @Test

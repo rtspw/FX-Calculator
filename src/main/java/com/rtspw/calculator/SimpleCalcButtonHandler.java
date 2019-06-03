@@ -7,13 +7,15 @@ import javafx.scene.input.MouseEvent;
 class SimpleCalcButtonHandler extends ButtonHandler {
 
     private boolean invalidPreviousExpression;
-    private InputValidator simpleInputValidator;
+    private InputValidator inputValidator;
     private DisplayController displayController;
+    private EquationSolver equationSolver;
     private Button sourceButtonOfCurrentEvent;
 
-    SimpleCalcButtonHandler(Label label) {
-        simpleInputValidator = new InputValidator();
+    SimpleCalcButtonHandler(Label label, InputValidator inputValidator, EquationSolver equationSolver) {
         displayController = new DisplayController(label);
+        this.inputValidator = inputValidator;
+        this.equationSolver = equationSolver;
     }
 
     @Override
@@ -40,24 +42,24 @@ class SimpleCalcButtonHandler extends ButtonHandler {
 
     private void handleClearButton() {
         displayController.clear();
-        simpleInputValidator.resetTokens();
+        inputValidator.resetTokens();
     }
 
     private void handleBackspaceButton() {
         displayController.unappend();
-        simpleInputValidator.removeToken();
+        inputValidator.removeToken();
     }
 
     private void handlePlusMinusButton() {
-        if (!simpleInputValidator.isValid("±")) return;
-        simpleInputValidator.addToken("±");
+        if (!inputValidator.isValid("±")) return;
+        inputValidator.addToken("±");
         displayController.append("-");
     }
 
     private void handleDefaultCase() {
         String clickedButtonText = sourceButtonOfCurrentEvent.getText();
-        if (!simpleInputValidator.isValid(clickedButtonText)) return;
-        simpleInputValidator.addToken(clickedButtonText);
+        if (!inputValidator.isValid(clickedButtonText)) return;
+        inputValidator.addToken(clickedButtonText);
         displayController.append(super.addWhitespaceToOperators(clickedButtonText));
     }
 
@@ -69,13 +71,13 @@ class SimpleCalcButtonHandler extends ButtonHandler {
         if (!invalidPreviousExpression) return;
         invalidPreviousExpression = false;
         displayController.clear();
-        simpleInputValidator.resetTokens();
+        inputValidator.resetTokens();
     }
 
     private void handleSimpleEqualsButtonAction() {
-        if (!simpleInputValidator.isExpressionComplete()) return;
-        simpleInputValidator.resetTokens();
-        final String finalValue = Calculator.parseInfixEquation(displayController.getText());
+        if (!inputValidator.isExpressionComplete()) return;
+        inputValidator.resetTokens();
+        final String finalValue = equationSolver.solveEquation(displayController.getText());
         if (finalValue.equals("ERROR")) {
             invalidPreviousExpression = true;
         } else {
@@ -83,7 +85,7 @@ class SimpleCalcButtonHandler extends ButtonHandler {
                     .mapToObj(c -> (char)c)
                     .map(c -> (c == '-') ? '±' : c)
                     .map(String::valueOf)
-                    .forEach(simpleInputValidator::addToken);
+                    .forEach(inputValidator::addToken);
         }
         displayController.clear();
         displayController.append(finalValue);

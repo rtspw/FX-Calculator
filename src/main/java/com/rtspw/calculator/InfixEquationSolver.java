@@ -7,7 +7,7 @@ import java.util.Stack;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 
-class Calculator {
+class InfixEquationSolver extends EquationSolver {
 
     static private HashMap<String, BinaryOperator<Double>> operatorTokenToBinaryFunctionMap;
     static private HashMap<String, UnaryOperator<Double>> operatorTokenToUnaryFunctionMap;
@@ -47,9 +47,8 @@ class Calculator {
         formatter.setGroupingUsed(false);
     }
 
-
-
-    static String parseInfixEquation(String equation) {
+    @Override
+    String solveEquation(String equation) {
         String rpn = NotationConverter.infixToPostfix(equation);
         String[] tokens = rpn.split(" ");
         Stack<Double> equationParsingStack = new Stack<>();

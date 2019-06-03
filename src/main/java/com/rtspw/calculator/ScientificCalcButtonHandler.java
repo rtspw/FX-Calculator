@@ -9,11 +9,13 @@ class ScientificCalcButtonHandler extends ButtonHandler {
     private boolean invalidPreviousExpression;
     private DisplayController displayController;
     private InputValidator inputValidator;
+    private EquationSolver equationSolver;
     private Button sourceButtonOfCurrentEvent;
 
-    ScientificCalcButtonHandler(Label label) {
+    ScientificCalcButtonHandler(Label label, InputValidator inputValidator, EquationSolver equationSolver) {
         displayController = new DisplayController(label);
-        inputValidator = new InputValidator();
+        this.inputValidator = inputValidator;
+        this.equationSolver = equationSolver;
     }
 
     @Override
@@ -90,7 +92,7 @@ class ScientificCalcButtonHandler extends ButtonHandler {
     private void handleScientificEqualsButtonAction() {
         if (!inputValidator.isExpressionComplete()) return;
         inputValidator.resetTokens();
-        final String finalValue = Calculator.parseInfixEquation(displayController.getText());
+        final String finalValue = equationSolver.solveEquation(displayController.getText());
         if (finalValue.equals("ERROR")) {
             invalidPreviousExpression = true;
         } else {
