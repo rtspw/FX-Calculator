@@ -9,4 +9,8 @@ class StringUtil {
         String trimmed = str.trim();
         return trimmed.substring(trimmed.lastIndexOf(" ") + 1);
     }
+
+    static String removeNonNumericChars(String str) {
+        return str.replaceAll("[^0-9.]", "");
+    }
 }
