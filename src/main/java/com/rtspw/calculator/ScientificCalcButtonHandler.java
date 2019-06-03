@@ -93,7 +93,7 @@ class ScientificCalcButtonHandler extends ButtonHandler {
         if (!inputValidator.isExpressionComplete()) return;
         inputValidator.resetTokens();
         final String finalValue = equationSolver.solveEquation(displayController.getText());
-        if (finalValue.equals("ERROR")) {
+        if (finalValue.equals("ERROR") || finalValue.equals("NaN") || finalValue.contains("∞")) {
             invalidPreviousExpression = true;
         } else {
             finalValue.codePoints()

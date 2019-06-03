@@ -43,7 +43,7 @@ class InfixEquationSolver extends EquationSolver {
 
         formatter = new DecimalFormat();
         formatter.setDecimalSeparatorAlwaysShown(false);
-        formatter.setMaximumFractionDigits(10);
+        formatter.setMaximumFractionDigits(25);
         formatter.setGroupingUsed(false);
     }
 
@@ -55,7 +55,7 @@ class InfixEquationSolver extends EquationSolver {
 
         Arrays.stream(tokens).forEach(token -> {
             TokenIdentifier current = new TokenIdentifier(token);
-            if (current.isNumber()) {
+            if (current.isNumber() || token.equals("NaN")) {
                 equationParsingStack.push(Double.parseDouble(token));
                 return;
             }
