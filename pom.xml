@@ -43,6 +43,7 @@
                 <version>0.0.2</version>
                 <configuration>
                     <mainClass>com.rtspw.calculator.App</mainClass>
+                    <launcher>rtspw-fx-calculator</launcher>
                 </configuration>
             </plugin>
         </plugins>
